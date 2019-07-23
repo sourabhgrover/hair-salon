@@ -1,9 +1,13 @@
-import {GET_USER_CLASSES} from type;
+import { GET_USER_CLASSES } from "./type";
 
-
+import hairSalonApi from "../apis/hairSalonApi";
 
 export const getAllUserClasses = () => {
-    return{
-        type : GET_USER_CLASSES
-    }
+  return async (dispatch, getState) => {
+    const response = await hairSalonApi.get("/posts");
+    dispatch({
+      type: GET_USER_CLASSES,
+      payload: response
+    });
+  };
 };

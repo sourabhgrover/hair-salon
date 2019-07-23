@@ -1,6 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
 
+import { getAllUserClasses } from "../../actions/classesAction";
 class ClassList extends React.Component {
+  componentDidMount() {
+    this.props.getAllUserClasses();
+  }
   render() {
     return (
       <section className="content">
@@ -43,5 +48,11 @@ class ClassList extends React.Component {
     );
   }
 }
-
-export default ClassList;
+const mapStateToProps = state => {
+  console.log(state);
+  return { classes: state.classes };
+};
+export default connect(
+  mapStateToProps,
+  { getAllUserClasses }
+)(ClassList);
