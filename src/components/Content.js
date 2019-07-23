@@ -16,7 +16,8 @@ export default class Content extends Component {
             <li className="active">Dashboard</li>
           </ol>
         </section>
-        <section className="content">
+        {this.props.children}
+        {/* <section className="content">
           <div className="row">
             <div className="col-xs-12">
               <div className="box">
@@ -52,7 +53,7 @@ export default class Content extends Component {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </div>
     );
   }
