@@ -23,71 +23,13 @@ export default class SideBar extends Component {
               </Link>
             </div>
           </div>
-          <form action="#" method="get" className="sidebar-form">
-            <div className="input-group">
-              <input
-                type="text"
-                name="q"
-                className="form-control"
-                placeholder="Search..."
-              />
-              <span className="input-group-btn">
-                <button
-                  type="submit"
-                  name="search"
-                  id="search-btn"
-                  className="btn btn-flat"
-                >
-                  <i className="fa fa-search" />
-                </button>
-              </span>
-            </div>
-          </form>
+
           <ul className="sidebar-menu" data-widget="tree">
             <li className="header">MAIN NAVIGATION</li>
             <li className="treeview">
               <Link to="/">
-                <i className="fa fa-files-o" />
-                <span>Layout Options</span>
-                <span className="pull-right-container">
-                  <span className="label label-primary pull-right">4</span>
-                </span>
-              </Link>
-              <ul className="treeview-menu">
-                <li>
-                  <a href="pages/layout/top-nav.html">
-                    <i className="fa fa-circle-o" /> Top Navigation
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/layout/boxed.html">
-                    <i className="fa fa-circle-o" /> Boxed
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/layout/fixed.html">
-                    <i className="fa fa-circle-o" /> Fixed
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/layout/collapsed-sidebar.html">
-                    <i className="fa fa-circle-o" /> Collapsed Sidebar
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="pages/widgets.html">
-                <i className="fa fa-th" /> <span>Widgets</span>
-                <span className="pull-right-container">
-                  <small className="label pull-right bg-green">new</small>
-                </span>
-              </a>
-            </li>
-            <li className="treeview">
-              <Link to="/">
                 <i className="fa fa-pie-chart" />
-                <span>Charts</span>
+                <span>Users</span>
                 <span className="pull-right-container">
                   <i className="fa fa-angle-left pull-right" />
                 </span>
@@ -114,39 +56,6 @@ export default class SideBar extends Component {
                   </a>
                 </li>
               </ul>
-            </li>
-            <li>
-              <ul className="treeview-menu">
-                <li>
-                  <a href="pages/tables/simple.html">
-                    <i className="fa fa-circle-o" /> Simple tables
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/tables/data.html">
-                    <i className="fa fa-circle-o" /> Data tables
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="pages/calendar.html">
-                <i className="fa fa-calendar" /> <span>Calendar</span>
-                <span className="pull-right-container">
-                  <small className="label pull-right bg-red">3</small>
-                  <small className="label pull-right bg-blue">17</small>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="pages/mailbox/mailbox.html">
-                <i className="fa fa-envelope" /> <span>Mailbox</span>
-                <span className="pull-right-container">
-                  <small className="label pull-right bg-yellow">12</small>
-                  <small className="label pull-right bg-green">16</small>
-                  <small className="label pull-right bg-red">5</small>
-                </span>
-              </a>
             </li>
           </ul>
         </section>

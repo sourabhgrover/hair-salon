@@ -1,5 +1,6 @@
 import hairSalonApi from "../apis/hairSalonApi";
-import { SIGN_IN } from "./type";
+import { SIGN_IN, SIGN_OUT } from "./type";
+import history from "../history";
 
 export const login = data => {
   return async (dispatch, getState) => {
@@ -10,5 +11,11 @@ export const login = data => {
       type: SIGN_IN,
       payload: response.data.response
     });
+    history.push("/classlist");
   };
+};
+
+export const logout = () => {
+  localStorage.removeItem("jwtToken");
+  return { type: SIGN_OUT };
 };

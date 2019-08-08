@@ -1,6 +1,9 @@
 // Header.js
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+import { logout } from "../actions/authAction";
 
 class Header extends Component {
   render() {
@@ -57,6 +60,16 @@ class Header extends Component {
                 </ul>
               </li>
             </ul>
+            <Link
+              to="/logout"
+              onClick={e => {
+                e.preventDefault();
+                this.props.logout();
+              }}
+              className="btn btn-default btn-flat"
+            >
+              Sign out
+            </Link>
           </div>
         </nav>
       </header>
@@ -64,4 +77,7 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect(
+  null,
+  { logout }
+)(Header);

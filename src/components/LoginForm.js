@@ -104,8 +104,6 @@ const formWrapper = reduxForm({
 })(LoginForm);
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
-  console.log(ownProps);
   return {};
 };
 export default connect(
