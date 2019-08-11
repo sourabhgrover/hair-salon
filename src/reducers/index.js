@@ -5,17 +5,19 @@ import storage from "redux-persist/lib/storage";
 
 import classReducer from "./classReducer";
 import authReducer from "./authReducer";
+import userReducer from "./userReducer";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["user"]
+  whitelist: ["auth"]
 };
 
 const combineReducer = combineReducers({
   classes: classReducer,
   form: formReducer,
-  user: authReducer
+  auth: authReducer,
+  user: userReducer
 });
 
 export default persistReducer(persistConfig, combineReducer);

@@ -24,7 +24,7 @@ class LoginForm extends React.Component {
 
   renderError = ({ error, touched }) => {
     if (touched && error) {
-      return <div>{error}</div>;
+      return <div style={{ color: "red" }}>{error}</div>;
     }
   };
 
@@ -85,7 +85,7 @@ const validate = formValues => {
   const errors = {};
 
   if (!formValues.email) {
-    errors.email = "Required";
+    errors.email = "Email is required";
   } else if (
     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(formValues.email)
   ) {
@@ -93,7 +93,7 @@ const validate = formValues => {
   }
 
   if (!formValues.password) {
-    errors.password = "Required";
+    errors.password = "Password is required";
   }
 
   return errors;

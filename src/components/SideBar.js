@@ -29,31 +29,16 @@ export default class SideBar extends Component {
             <li className="treeview">
               <Link to="/">
                 <i className="fa fa-pie-chart" />
-                <span>Users</span>
+                <span>User Managment</span>
                 <span className="pull-right-container">
                   <i className="fa fa-angle-left pull-right" />
                 </span>
               </Link>
               <ul className="treeview-menu">
                 <li>
-                  <a href="pages/charts/chartjs.html">
-                    <i className="fa fa-circle-o" /> ChartJS
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/charts/morris.html">
-                    <i className="fa fa-circle-o" /> Morris
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/charts/flot.html">
-                    <i className="fa fa-circle-o" /> Flot
-                  </a>
-                </li>
-                <li>
-                  <a href="pages/charts/inline.html">
-                    <i className="fa fa-circle-o" /> Inline charts
-                  </a>
+                  <Link to="/allUserList">
+                    <i className="fa fa-circle-o" /> User Listing
+                  </Link>
                 </li>
               </ul>
             </li>

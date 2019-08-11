@@ -1,10 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getAllUserClasses } from "../../actions/classesAction";
 
-class ClassList extends React.Component {
+import { getEducatorClassesById } from "../../actions/classesAction";
+
+class EducatorClassesList extends React.Component {
   componentDidMount() {
-    this.props.getAllUserClasses();
+    const params = this.props.match.params;
+    const data = {
+      user_id: params.user_id,
+      limit: params.limit,
+      offset: params.offset
+    };
+    this.props.getEducatorClassesById(data);
   }
 
   renderTable() {
@@ -13,18 +20,20 @@ class ClassList extends React.Component {
         <tbody>
           <tr>
             <th>Title</th>
-            <th>Start Date/Time</th>
-            <th>End Date/Time</th>
             <th>Description</th>
+            <th>Available Seats</th>
+            <th>Date/Time</th>
             <th>Venue Details</th>
           </tr>
-          {this.props.classList.map(singleClass => {
+          {this.props.educatorClassesList.map(singleClass => {
             return (
               <tr key={singleClass._id}>
                 <td>{singleClass.title}</td>
-                <td>{`${singleClass.startDate} ${singleClass.startTime}`}</td>
-                <td>{`${singleClass.endDate} ${singleClass.endTime}`}</td>
                 <td>{singleClass.description}</td>
+                <td>{singleClass.availableSeats}</td>
+                <td>
+                  {singleClass.date} {singleClass.time}
+                </td>
                 <td>{singleClass.venue}</td>
               </tr>
             );
@@ -34,6 +43,9 @@ class ClassList extends React.Component {
     );
   }
   render() {
+    if (this.props.educatorClassesList === undefined) {
+      return <div>Loading...</div>;
+    }
     return (
       <section className="content">
         <div className="row">
@@ -54,9 +66,11 @@ class ClassList extends React.Component {
   }
 }
 const mapStateToProps = state => {
-  return { classList: Object.values(state.classes) };
+  return {
+    educatorClassesList: state.classes.educatorClassesList
+  };
 };
 export default connect(
   mapStateToProps,
-  { getAllUserClasses }
-)(ClassList);
+  { getEducatorClassesById }
+)(EducatorClassesList);

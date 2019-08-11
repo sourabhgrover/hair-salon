@@ -11,7 +11,9 @@ export const login = data => {
       type: SIGN_IN,
       payload: response.data.response
     });
-    history.push("/classlist");
+    hairSalonApi.defaults.headers.common["Authorization"] =
+      localStorage.jwtToken;
+    history.push("/allUserList");
   };
 };
 
