@@ -32,9 +32,7 @@ class LoginForm extends React.Component {
     return (
       <div className="login-box">
         <div className="login-logo">
-          <a href="../../index2.html">
-            <b>Admin</b>LTE
-          </a>
+          <b>Admin Pannel</b>
         </div>
         <div className="login-box-body">
           <p className="login-box-msg">Sign in to start your session</p>
