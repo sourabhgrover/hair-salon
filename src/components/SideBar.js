@@ -18,16 +18,13 @@ export default class SideBar extends Component {
             </div>
             <div className="pull-left info">
               <p>Alexander Pierce</p>
-              <Link to="/">
-                <i className="fa fa-circle text-success" /> Online
-              </Link>
             </div>
           </div>
 
           <ul className="sidebar-menu" data-widget="tree">
             <li className="header">MAIN NAVIGATION</li>
             <li className="treeview">
-              <Link to="/">
+              <Link to="/allUserList">
                 <i className="fa fa-pie-chart" />
                 <span>User Managment</span>
                 <span className="pull-right-container">
@@ -40,6 +37,18 @@ export default class SideBar extends Component {
                     <i className="fa fa-circle-o" /> User Listing
                   </Link>
                 </li>
+              </ul>
+            </li>
+            <li className="treeview">
+              <Link to="/">
+                <i className="fa fa-link" /> <span>Multilevel</span>
+                <span className="pull-right-container">
+                  <i className="fa fa-angle-left pull-right" />
+                </span>
+              </Link>
+              <ul className="treeview-menu">
+                <li>>Link in level 2</li>
+                <li>Link in level 2</li>
               </ul>
             </li>
           </ul>
