@@ -11,8 +11,10 @@ import LoginForm from "./LoginForm";
 import ClassList from "./content/ClassList";
 import HairStylistList from "./content/HairStylistList";
 import HairEducatorList from "./content/HairEducatorList";
-import UserList from "./content/UserList";
+import UserList from "./content/User/UserList";
 import EducatorClassesList from "./content/EducatorClassesList";
+import UserCreate from "./content/User/UserCreate";
+import UserEdit from "./content/User/UserEdit";
 
 class App extends React.Component {
   render() {
@@ -33,6 +35,8 @@ class App extends React.Component {
                 <Route path="/hairstylist" component={HairStylistList} />
                 <Route path="/haireducatorlist" component={HairEducatorList} />
                 <Route path="/allUserList" component={UserList} />
+                <Route path="/createUser" component={UserCreate} />
+                <Route path="/editUser/:userId" component={UserEdit} />
                 <Route
                   path="/educatorclasses/:user_id/:limit/:offset"
                   component={EducatorClassesList}

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import _ from "lodash";
 
 import { getEducatorClassesById } from "../../actions/classesAction";
 
@@ -13,7 +14,21 @@ class EducatorClassesList extends React.Component {
     };
     this.props.getEducatorClassesById(data);
   }
-
+  renderRowList = () => {
+    return this.props.educatorClassesList.map(singleClass => {
+      return (
+        <tr key={singleClass._id}>
+          <td>{singleClass.title}</td>
+          <td>{singleClass.description}</td>
+          <td>{singleClass.availableSeats}</td>
+          <td>
+            {singleClass.date} {singleClass.time}
+          </td>
+          <td>{singleClass.venue}</td>
+        </tr>
+      );
+    });
+  };
   renderTable() {
     return (
       <table className="table table-hover">
@@ -25,19 +40,13 @@ class EducatorClassesList extends React.Component {
             <th>Date/Time</th>
             <th>Venue Details</th>
           </tr>
-          {this.props.educatorClassesList.map(singleClass => {
-            return (
-              <tr key={singleClass._id}>
-                <td>{singleClass.title}</td>
-                <td>{singleClass.description}</td>
-                <td>{singleClass.availableSeats}</td>
-                <td>
-                  {singleClass.date} {singleClass.time}
-                </td>
-                <td>{singleClass.venue}</td>
-              </tr>
-            );
-          })}
+          {_.isEmpty(this.props.educatorClassesList) ? (
+            <tr>
+              <td>No Result Found</td>
+            </tr>
+          ) : (
+            this.renderRowList()
+          )}
         </tbody>
       </table>
     );

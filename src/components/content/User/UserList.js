@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 // import Pagination from "react-js-pagination";
 
-import { getAllUserAvailable } from "../../actions/userAction";
-import { USER_LISTING_ITEM_PER_PAGE } from "../../utils/constant";
+import { getAllUserAvailable } from "../../../actions/userAction";
+import { USER_LISTING_ITEM_PER_PAGE } from "../../../utils/constant";
 class UserList extends React.Component {
   componentDidMount() {
     // const params = this.props.match.params;
@@ -43,6 +43,7 @@ class UserList extends React.Component {
           <tr>
             <th>Name</th>
             <th>Profession</th>
+            <th>Actions</th>
           </tr>
           {this.props.userList.map(singleUser => {
             return (
@@ -57,6 +58,9 @@ class UserList extends React.Component {
                   )}
                 </td>
                 <td>{this.renderSwitch(singleUser.profession)}</td>
+                <td>
+                  <Link to={`/editUser/${singleUser.id}`}>Edit</Link>
+                </td>
               </tr>
             );
           })}

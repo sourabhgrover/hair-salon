@@ -36,6 +36,13 @@ class LoginForm extends React.Component {
         </div>
         <div className="login-box-body">
           <p className="login-box-msg">Sign in to start your session</p>
+
+          {/* This will handle the global error */}
+          <div className="errorContainer">
+            <span className="error" style={{ color: "red" }}>
+              {this.props.error}
+            </span>
+          </div>
           <form
             method="post"
             onSubmit={this.props.handleSubmit(this.onSubmitForm)}

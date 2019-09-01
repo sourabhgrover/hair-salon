@@ -8,18 +8,7 @@ export default class SideBar extends Component {
     return (
       <aside className="main-sidebar">
         <section className="sidebar">
-          <div className="user-panel">
-            <div className="pull-left image">
-              <img
-                src="img/user2-160x160.jpg"
-                className="img-circle"
-                alt="User-1"
-              />
-            </div>
-            <div className="pull-left info">
-              <p>Alexander Pierce</p>
-            </div>
-          </div>
+          <div className="user-panel"></div>
 
           <ul className="sidebar-menu" data-widget="tree">
             <li className="header">MAIN NAVIGATION</li>
@@ -37,18 +26,12 @@ export default class SideBar extends Component {
                     <i className="fa fa-circle-o" /> User Listing
                   </Link>
                 </li>
-              </ul>
-            </li>
-            <li className="treeview">
-              <Link to="/">
-                <i className="fa fa-link" /> <span>Multilevel</span>
-                <span className="pull-right-container">
-                  <i className="fa fa-angle-left pull-right" />
-                </span>
-              </Link>
-              <ul className="treeview-menu">
-                <li>>Link in level 2</li>
-                <li>Link in level 2</li>
+                <li>
+                  <Link to="/createUser">
+                    <i className="fa fa-circle-o" />
+                    Create User
+                  </Link>
+                </li>
               </ul>
             </li>
           </ul>

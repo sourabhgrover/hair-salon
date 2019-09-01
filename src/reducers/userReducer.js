@@ -1,4 +1,4 @@
-import { GET_ALL_USER_AVAILABLE } from "../actions/type";
+import { GET_ALL_USER_AVAILABLE, GET_USER_BY_ID } from "../actions/type";
 
 const intialState = {};
 const userReducer = (state = intialState, action) => {
@@ -8,6 +8,11 @@ const userReducer = (state = intialState, action) => {
         ...state,
         userList: action.payload.response.users,
         totalCount: action.payload.totalCount
+      };
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        currentUser: action.payload.response.user
       };
     default:
       return state;

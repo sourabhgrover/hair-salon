@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 class Footer extends React.Component {
   render() {
@@ -8,10 +7,7 @@ class Footer extends React.Component {
         <div className="pull-right hidden-xs">
           <b>Version</b> 2.4.0
         </div>
-        <strong>
-          Copyright © 2014-2016{" "}
-          <Link to="https://adminlte.io">Almsaeed Studio</Link>.
-        </strong>
+        <strong>Copyright © 2014-2016 </strong>
         All rights reserved.
       </footer>
     );

@@ -3,3 +3,5 @@ export const SIGN_IN = "SIGN_IN";
 export const SIGN_OUT = "SIGN_OUT";
 export const GET_ALL_USER_AVAILABLE = "GET_ALL_USER_AVAILABLE";
 export const GET_EDUCATOR_CLASSES = "GET_EDUCATOR_CLASSES";
+export const USER_CREATED = "USER_CREATED";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
