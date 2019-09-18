@@ -7,7 +7,8 @@ const userReducer = (state = intialState, action) => {
       return {
         ...state,
         userList: action.payload.response.users,
-        totalCount: action.payload.totalCount
+        totalCount: action.payload.totalCount,
+        pageCount: action.payload.pageCount
       };
     case GET_USER_BY_ID:
       return {

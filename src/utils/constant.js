@@ -1,1 +1,1 @@
-export const USER_LISTING_ITEM_PER_PAGE = 100;
+export const USER_LISTING_ITEM_PER_PAGE = 20;

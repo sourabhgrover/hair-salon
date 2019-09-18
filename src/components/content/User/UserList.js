@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 // import Pagination from "react-js-pagination";
 
 import { getAllUserAvailable } from "../../../actions/userAction";
@@ -26,14 +27,14 @@ class UserList extends React.Component {
     }
   }
 
-  handlePageChange = pageNumber => {
-    var offset =
-      pageNumber * USER_LISTING_ITEM_PER_PAGE - USER_LISTING_ITEM_PER_PAGE;
-    const data = {
+  handlePageClick = data => {
+    let selected = data.selected;
+    let offset = Math.ceil(selected * USER_LISTING_ITEM_PER_PAGE);
+    const postData = {
       limit: USER_LISTING_ITEM_PER_PAGE,
       offset
     };
-    this.props.getAllUserAvailable(data);
+    this.props.getAllUserAvailable(postData);
   };
 
   renderTable() {
@@ -91,6 +92,21 @@ class UserList extends React.Component {
               pageRangeDisplayed={5}
               onChange={this.handlePageChange}
             /> */}
+
+            <ReactPaginate
+              previousLabel={"previous"}
+              nextLabel={"next"}
+              breakLabel={"..."}
+              breakClassName={"break-me"}
+              // pageCount={this.state.pageCount}
+              pageCount={this.props.pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={this.handlePageClick}
+              containerClassName={"pagination"}
+              subContainerClassName={"pages pagination"}
+              activeClassName={"active"}
+            />
           </div>
         </div>
       </section>
@@ -100,7 +116,8 @@ class UserList extends React.Component {
 const mapStateToProps = state => {
   return {
     userList: state.user.userList,
-    totalCount: state.user.totalCount
+    totalCount: state.user.totalCount,
+    pageCount: state.user.pageCount
   };
 };
 export default connect(

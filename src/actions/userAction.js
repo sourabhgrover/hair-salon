@@ -1,8 +1,7 @@
 import { stopSubmit } from "redux-form";
-
-import { GET_ALL_USER_AVAILABLE, GET_USER_BY_ID } from "./type";
 import hairSalonApi from "../apis/hairSalonApi";
 import history from "../history";
+import { GET_ALL_USER_AVAILABLE, GET_USER_BY_ID } from "./type";
 
 export const getAllUserAvailable = data => {
   return async (dispatch, getState) => {
@@ -10,6 +9,9 @@ export const getAllUserAvailable = data => {
     const response = await hairSalonApi.get(
       `/users/getAllUsersAvailable/${data.limit}/${data.offset}`
     );
+
+    // Count number of pages
+    response.data.pageCount = Math.ceil(response.data.totalCount / data.limit);
     dispatch({
       type: GET_ALL_USER_AVAILABLE,
       payload: response.data
@@ -40,7 +42,7 @@ export const getUserById = id => {
 export const updateUserById = (userId, data) => {
   return async dispatch => {
     const response = await hairSalonApi.post(
-      `/users/updateUserDetails/${userId}`,
+      `/users/updateUserInformation/${userId}`,
       data
     );
     console.log(response);
