@@ -35,7 +35,6 @@ export const login = data => {
           dispatch(
             stopSubmit("LoginForm", { _error: error.response.data.message })
           );
-          console.log(error.response);
         }
       });
   };

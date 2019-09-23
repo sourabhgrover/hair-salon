@@ -19,12 +19,11 @@ export const getAllUserAvailable = data => {
   };
 };
 
-export const createUser = data => {
+export const createUser = (data, routerHistory) => {
   return async (dispatch, getState) => {
     const response = await hairSalonApi.post("/users/createNewUser", data);
     if (response.data.success) {
-      // dispatch({ type: USER_CREATED });
-      history.push("/allUserList");
+      routerHistory.push("/allUserList");
     } else {
       // Server Side Validation Handling
       dispatch(stopSubmit("UserCreate", { _error: response.data.message }));
@@ -39,13 +38,16 @@ export const getUserById = id => {
   };
 };
 
-export const updateUserById = (userId, data) => {
+export const updateUserById = (userId, data, routerHistory) => {
   return async dispatch => {
-    const response = await hairSalonApi.post(
+    const response = await hairSalonApi.put(
       `/users/updateUserInformation/${userId}`,
       data
     );
-    console.log(response);
-    dispatch({ type: "" });
+    if (response.data.success) {
+      // dispatch({ type: USER_CREATED });
+      // history.push("/allUserList");
+      routerHistory.push("/allUserList");
+    }
   };
 };

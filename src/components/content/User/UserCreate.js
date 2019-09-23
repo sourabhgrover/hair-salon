@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 
 import UserForm from "./UserForm";
 import { createUser } from "../../../actions/userAction";
+import { withRouter } from "react-router-dom";
 
 class UserCreate extends React.Component {
   onSubmitForm = formValues => {
-    this.props.createUser(formValues);
+    this.props.createUser(formValues, this.props.history);
   };
 
   render() {
@@ -28,7 +29,9 @@ const mapStateToProps = (state, ownProps) => {
   return {};
 };
 
-export default connect(
-  mapStateToProps,
-  { createUser }
-)(UserCreate);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { createUser }
+  )(UserCreate)
+);

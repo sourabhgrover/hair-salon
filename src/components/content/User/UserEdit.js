@@ -4,19 +4,19 @@ import { connect } from "react-redux";
 
 import { getUserById, updateUserById } from "../../../actions/userAction";
 import UserForm from "./UserForm";
+import { withRouter } from "react-router-dom";
 
 class UserEdit extends React.Component {
   componentDidMount() {
     this.props.getUserById(this.props.match.params.userId);
-    console.log(this.props.currentUser);
   }
 
-  // componentDidUpdate() {
-  //   this.props.getUserById(this.props.match.params.userId);
-  //   console.log(this.props.currentUser);
-  // }
   onSubmitForm = formValues => {
-    this.props.updateUserById(this.props.match.params.userId, formValues);
+    this.props.updateUserById(
+      this.props.match.params.userId,
+      formValues,
+      this.props.history
+    );
   };
   render() {
     const submitButtonText = "Update";
@@ -49,7 +49,9 @@ class UserEdit extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return { currentUser: state.user.currentUser };
 };
-export default connect(
-  mapStateToProps,
-  { getUserById, updateUserById }
-)(UserEdit);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getUserById, updateUserById }
+  )(UserEdit)
+);
