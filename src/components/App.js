@@ -15,6 +15,7 @@ import UserList from "./content/User/UserList";
 import EducatorClassesList from "./content/EducatorClassesList";
 import UserCreate from "./content/User/UserCreate";
 import UserEdit from "./content/User/UserEdit";
+import UserDelete from "./content/User/UserDelete";
 
 class App extends React.Component {
   render() {
@@ -37,6 +38,7 @@ class App extends React.Component {
                 <Route path="/allUserList" component={UserList} />
                 <Route path="/createUser" component={UserCreate} />
                 <Route path="/editUser/:userId" component={UserEdit} />
+                <Route path="/deleteUser/:userId" component={UserDelete} />
                 <Route
                   path="/educatorclasses/:user_id/:limit/:offset"
                   component={EducatorClassesList}

@@ -1,7 +1,7 @@
 import { stopSubmit } from "redux-form";
 import hairSalonApi from "../apis/hairSalonApi";
-import history from "../history";
-import { GET_ALL_USER_AVAILABLE, GET_USER_BY_ID } from "./type";
+// import history from "../history";
+import { GET_ALL_USER_AVAILABLE, GET_USER_BY_ID, DELETE_USER } from "./type";
 
 export const getAllUserAvailable = data => {
   return async (dispatch, getState) => {
@@ -48,6 +48,18 @@ export const updateUserById = (userId, data, routerHistory) => {
       // dispatch({ type: USER_CREATED });
       // history.push("/allUserList");
       routerHistory.push("/allUserList");
+    }
+  };
+};
+
+export const deleteUser = (id, routerHistory) => {
+  return async dispatch => {
+    const response = await hairSalonApi.delete(
+      `/users/deleteUserInformation/${id}`
+    );
+    if (response.data.success) {
+      dispatch({ type: DELETE_USER, payload: id });
+      // routerHistory.push("/");
     }
   };
 };

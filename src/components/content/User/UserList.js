@@ -2,13 +2,13 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-// import Pagination from "react-js-pagination";
+import { withRouter } from "react-router-dom";
 
-import { getAllUserAvailable } from "../../../actions/userAction";
+import { getAllUserAvailable, deleteUser } from "../../../actions/userAction";
 import { USER_LISTING_ITEM_PER_PAGE } from "../../../utils/constant";
+
 class UserList extends React.Component {
   componentDidMount() {
-    // const params = this.props.match.params;
     const data = {
       limit: USER_LISTING_ITEM_PER_PAGE,
       offset: 0
@@ -37,6 +37,14 @@ class UserList extends React.Component {
     this.props.getAllUserAvailable(postData);
   };
 
+  confirmationBox = (e, userName, userId) => {
+    e.preventDefault();
+    if (window.confirm(`Are you sure you want to delete user ${userName} ?`)) {
+      // this.props.history.push(`/deleteUser/${userId}`);
+      this.props.deleteUser(`${userId}`, this.props.history);
+    }
+  };
+
   renderTable() {
     return (
       <table className="table table-hover">
@@ -60,7 +68,26 @@ class UserList extends React.Component {
                 </td>
                 <td>{this.renderSwitch(singleUser.profession)}</td>
                 <td>
-                  <Link to={`/editUser/${singleUser.id}`}>Edit</Link>
+                  {Number(singleUser.profession) !== 3 ? (
+                    <React.Fragment>
+                      <Link to={`/editUser/${singleUser.id}`}>Edit</Link>
+                      {"     "}
+                      <Link
+                        to={`/deleteUser/${singleUser.id}`}
+                        onClick={e =>
+                          this.confirmationBox(
+                            e,
+                            `${singleUser.first_name} ${singleUser.last_name}`,
+                            `${singleUser.id}`
+                          )
+                        }
+                      >
+                        Delete
+                      </Link>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>{"  "}</React.Fragment>
+                  )}
                 </td>
               </tr>
             );
@@ -120,7 +147,10 @@ const mapStateToProps = state => {
     pageCount: state.user.pageCount
   };
 };
-export default connect(
-  mapStateToProps,
-  { getAllUserAvailable }
-)(UserList);
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { getAllUserAvailable, deleteUser }
+  )(UserList)
+);
