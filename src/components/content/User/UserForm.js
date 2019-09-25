@@ -277,5 +277,6 @@ const validate = formValues => {
 
 export default reduxForm({
   form: "UserForm", // a unique identifier for this form
+  enableReinitialize: true, // TODO I have bind connect method first reintailize of form was not working ,explicitaly set it true
   validate // Set Validate method for client side validation
 })(UserForm);

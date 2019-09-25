@@ -49,6 +49,7 @@ class UserEdit extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   return { currentUser: state.user.currentUser };
 };
+
 export default withRouter(
   connect(
     mapStateToProps,
