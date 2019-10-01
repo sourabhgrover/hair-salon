@@ -26,7 +26,7 @@ export const createUser = (data, routerHistory) => {
       routerHistory.push("/allUserList");
     } else {
       // Server Side Validation Handling
-      dispatch(stopSubmit("UserCreate", { _error: response.data.message }));
+      dispatch(stopSubmit("UserForm", { _error: response.data.message }));
     }
   };
 };
